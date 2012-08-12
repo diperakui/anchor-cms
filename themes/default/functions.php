@@ -1,12 +1,11 @@
-<?php defined('IN_CMS') or die('No direct access allowed.');
+<?php
 
-/**
+/*
 	Custom theme functions
 	
 	Note: we recommend you prefix all your functions to avoid any naming 
 	collisions or wrap your functions with if function_exists braces.
 */
-
 function numeral($number) {
 	$test = abs($number) % 10;
 	$ext = ((abs($number) % 100 < 21 and abs($number) % 100 > 4) ? 'th' : (($test < 4) ? ($test < 3) ? ($test < 2) ? ($test < 1) ? 'th' : 'st' : 'nd' : 'rd' : 'th'));
@@ -48,7 +47,7 @@ function relative_time($date) {
 	}
 }
 
-/**
+/*
 	Binding custom functions
 	This is just an example of what can be done
 
