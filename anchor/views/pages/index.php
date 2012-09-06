@@ -14,7 +14,7 @@
 				<ul class="list">
 					<?php foreach($pages->results as $page): ?>
 					<li>
-						<p><a href="<?php echo url('pages/edit/' . $page->id); ?>"><?php echo Str::limit($page->name, 4); ?></a></p>
+						<p><a href="<?php echo url('pages/edit/' . $page->id); ?>"><?php echo Str::truncate($page->name, 4); ?></a></p>
 
 						<span class="status"><?php echo $page->status; ?></span>
 					</li>

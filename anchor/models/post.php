@@ -5,11 +5,11 @@ class Post extends Model {
 	public static $table = 'posts';
 
 	public static function paginate($page = 1, $perpage = 10) {
-		$query = DB::table(static::$table);
+		$query = query::table(static::$table);
 
 		$count = $query->count();
 
-		$results = $query->take($perpage)->skip(($page - 1) * $perpage)->sort('created', 'desc')->get();
+		$results = $query->take($perpage)->skip(($page - 1) * $perpage)->order_by('created', 'desc')->get();
 
 		return new Paginator($results, $count, $page, $perpage, url('posts'));
 	}

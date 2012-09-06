@@ -1,6 +1,6 @@
 <?php echo $header; ?>
 
-			<h1>Editing &ldquo;<?php echo Str::limit($page->name, 4); ?>&rdquo;</h1>
+			<h1>Editing &ldquo;<?php echo Str::truncate($page->name, 4); ?>&rdquo;</h1>
 
 			<?php echo $messages; ?>
 

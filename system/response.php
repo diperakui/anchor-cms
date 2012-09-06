@@ -1,4 +1,4 @@
-<?php
+<?php namespace System;
 
 class Response {
 
@@ -71,7 +71,7 @@ class Response {
 	}
 
 	public static function redirect($uri, $status = 302) {
-		return static::make('', $status)->header('Location', Config::get('application.base_url') . $uri);
+		return static::make('', $status)->header('Location', Uri::make($uri));
 	}
 
 	public function header($name, $value) {

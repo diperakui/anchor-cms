@@ -45,6 +45,31 @@
 							
 							<em><?php echo __('posts.content_explain', 'Your post\'s main content. Enjoys a healthy dose of valid HTML.'); ?></em>
 						</p>
+
+						<?php foreach($fields as $extend): ?>
+						<?php $extend->key = 'extend_' . $extend->key; ?>
+
+						<p>
+							<label for="html"><?php echo $extend->label; ?>:</label>
+
+							<?php if($extend->field == 'text'): ?>
+							<input id="<?php echo $extend->key; ?>" name="<?php echo $extend->key; ?>" value="<?php echo Input::old($extend->key); ?>">
+							<?php endif; ?>
+
+							<?php if($extend->field == 'html'): ?>
+							<textarea id="<?php echo $extend->key; ?>" name="<?php echo $extend->key; ?>"><?php echo Input::old($extend->key); ?></textarea>
+							<?php endif; ?>
+
+							<?php if($extend->field == 'image'): ?>
+							<input id="<?php echo $extend->key; ?>" name="<?php echo $extend->key; ?>" type="file">
+							<?php endif; ?>
+
+							<?php if($extend->field == 'file'): ?>
+							<input id="<?php echo $extend->key; ?>" name="<?php echo $extend->key; ?>" type="file">
+							<?php endif; ?>
+						</p>
+
+						<?php endforeach; ?>
 						
 						<p>
 							<label for="status"><?php echo __('posts.status', 'Status'); ?>:</label>

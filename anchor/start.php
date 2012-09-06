@@ -3,7 +3,7 @@
 /*
 	Anchor setup
 */
-define('IS_ADMIN', strpos(Uri::current(), '/admin') === 0);
+define('IS_ADMIN', in_array('admin', explode('/', Uri::current())));
 
 // Check installation
 /*
@@ -18,7 +18,7 @@ if(Config::load(PATH . 'config.php') === false) {
 */
 
 // load database metadata
-foreach(DB::table('meta')->get() as $item) {
+foreach(Query::table('meta')->get() as $item) {
 	$meta[$item->key] = $item->value;
 }
 

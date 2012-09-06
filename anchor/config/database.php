@@ -1,15 +1,21 @@
 <?php
 
 return array(
-	'host' => 'localhost',
+
+	'default' => 'mysql',
+
+	'fetch' => PDO::FETCH_OBJ,
 	
-	'port' => '3306',
+	'connections' => array(
 
-	'username' => 'root',
+		'mysql' => array(
+			'driver' => 'mysql',
+			'hostname' => 'localhost',
+			'username' => 'root',
+			'password' => 'bottle',
+			'database' => 'anchorcms',
+			'charset' => 'utf8'
+		)
 
-	'password' => 'bottle',
-
-	'name' => 'anchorcms',
-
-	'collation' => 'utf8_bin'
+	)
 );

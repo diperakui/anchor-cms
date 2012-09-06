@@ -85,6 +85,9 @@ Route::get('admin/posts/add', array('before' => 'auth', 'do' => function() {
 	$vars['token'] = Csrf::token();
 	$vars['page'] = Registry::get('posts_page');
 
+	// extended fields
+	$vars['fields'] = Extend::fields('post');
+
 	$vars['statuses'] = array(
 		'draft' => __('posts.draft', 'Draft'), 
 		'archived' => __('posts.archived', 'Archived'), 
@@ -122,6 +125,9 @@ Route::post('admin/posts/add', array('before' => 'auth', 'do' => function() {
 		return Response::redirect('admin/posts/add');
 	}
 
+	// process extend fields
+	$postmeta = Extend::process();
+
 	if(empty($input['slug'])) {
 		$input['slug'] = $input['title'];
 	}
@@ -137,6 +143,14 @@ Route::post('admin/posts/add', array('before' => 'auth', 'do' => function() {
 	if(is_null($input['comments'])) $input['comments'] = 0;
 
 	$id = Post::create($input);
+
+	foreach($postmeta as $item) {
+		Query::insert('postmeta')->insert(array(
+			'post' => $id,
+			'extend' => $item['extend'],
+			'data' => $item['data']
+		));
+	}
 
 	Notify::success(sprintf(__('posts.created', 'Your new article was created, <a href="%s">continue editing</a>.'), url('posts/edit/' . $id)));
 

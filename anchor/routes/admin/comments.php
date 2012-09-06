@@ -11,14 +11,14 @@ Route::get(array(
 ), array('before' => 'auth', 'do' => function($status = 'all', $page = 1, $perpage = 10) {
 	$vars['messages'] = Notify::read();
 
-	$query = DB::table(Comment::$table);
+	$query = Query::table(Comment::$table);
 
 	if(in_array($status, array('pending', 'approved', 'spam'))) {
 		$query->where('status', '=', $status);
 	}
 
 	$count = $query->count();
-	$results = $query->take($perpage)->skip(($page - 1) * $perpage)->sort('date', 'desc')->get();
+	$results = $query->take($perpage)->skip(($page - 1) * $perpage)->order_by('date', 'desc')->get();
 
 	$vars['comments'] = new Paginator($results, $count, $page, $perpage, url('comments/' . $status));
 

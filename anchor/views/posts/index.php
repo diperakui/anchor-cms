@@ -15,7 +15,7 @@
 				<ul class="list">
 					<?php foreach($posts->results as $article): ?>
 					<li>
-						<p><a href="<?php echo url('posts/edit/' . $article->id); ?>"><?php echo Str::limit($article->title, 4); ?></a></p>
+						<p><a href="<?php echo url('posts/edit/' . $article->id); ?>"><?php echo Str::truncate($article->title, 4); ?></a></p>
 
 						<p><?php echo __('posts.created'); ?> <time><?php echo Date::format($article->created); ?></time>
 						<?php echo __('posts.by'); ?> <?php echo $article->author; ?></p>

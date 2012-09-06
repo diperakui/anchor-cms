@@ -18,7 +18,7 @@
 				<ul class="list">
 					<?php foreach($comments->results as $comment): ?>
 					<li>
-						<p><a href="<?php echo url('comments/edit/' . $comment->id); ?>"><?php echo Str::limit($comment->text, 10); ?></a></p>
+						<p><a href="<?php echo url('comments/edit/' . $comment->id); ?>"><?php echo Str::truncate($comment->text, 10); ?></a></p>
 
 						<p><?php echo __('comments.created', 'Created'); ?> <time><?php echo Date::format($comment->date); ?></time>
 						<?php echo __('comments.by', 'by'); ?> <?php echo $comment->name; ?></p>
