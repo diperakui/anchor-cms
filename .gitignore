@@ -4,7 +4,7 @@ Thumbs.db
 *.esproj
 
 # ignore generated config
-/config.php
+/anchor/config/dev
 
 # ignore user mod_rewrite
 /.htaccess
@@ -15,3 +15,9 @@ Thumbs.db
 
 # ignore phpunit tests
 /tests
+
+# ignore file uploads
+/uploads/*
+
+# make sure the uploads folder isn't empty
+!/uploads/index.php
