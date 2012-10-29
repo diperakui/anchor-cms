@@ -1,7 +1,58 @@
 <?php
 
 return array(
+<<<<<<< HEAD:anchor/config/strings.php
 
+=======
+	//  MySQL database details
+	'database' => array(
+		'host' => 'localhost',
+		'port' => '3306',
+		'username' => 'root',
+		'password' => '',
+		'name' => 'anchorcms',
+		'collation' => 'utf8_bin'
+	),
+
+	// Application settings
+	'application' => array(
+		// url paths
+		'base_url' => '/',
+		'index_page' => 'index.php',
+
+		// your time zone
+		'timezone' => 'UTC',
+
+		// access to admin
+		'admin_folder' => 'admin',
+
+		// your unique application key used for signing passwords
+		'key' => '',
+
+		// Default application language
+		'language' => 'en_GB'
+	),
+
+	// Session details
+	'session' => array(
+		'name' => 'anchorcms',
+		'expire' => 3600,
+		'path' => '/',
+		'domain' => ''
+	),
+
+	// Error handling
+	'error' => array(
+		'ignore' => array(),
+		'detail' => true,
+		'log' => false
+	),
+
+	// Show database profile
+	'debug' => false,
+
+	// Foreign characters
+>>>>>>> 2c341dfc5d9de8c0e080fb05a7bd581eaa1a74ba:config.default.php
 	'foreign_characters' => array(
 		'/æ|ǽ/' => 'ae',
 		'/œ/' => 'oe',

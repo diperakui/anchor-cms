@@ -9,9 +9,15 @@ require PATH . 'system/helpers.php';
 	Register Globals Fix
 */
 if(ini_get('register_globals')) {
-	$globals = array($_REQUEST, $_SESSION, $_SERVER, $_FILES);
+
+	$globals = array();
+	if (isset($_SESSION)) $globals[] = $_SESSION;
+	if (isset($_REQUEST)) $globals[] = $_REQUEST;
+	if (isset($_SERVER)) $globals[] = $_SERVER;
+	if (isset($_FILES)) $globals[] = $_FILES;
 
 	foreach($globals as $global) {
+		if (!empty($global))
 		foreach(array_keys($global) as $key) {
 			unset(${$key});
 		}
